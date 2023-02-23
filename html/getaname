@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+
+{%block title%} Get a name {%endblock%}
+
+{% block body %}
+
+<head>
+    <title>Random Name Generator</title>
+</head>
+<body>
+    <h1>Click the button to generate a random name:</h1>
+    <button onclick="'getRandomName()'">Generate Name</button>
+    <p id="name"></p>
+
+    <script>
+        function getRandomName() {
+            fetch('/getname').then(response => response.text()).then(name => {
+                document.getElementById('name').textContent = name;
+            });
+        }
+    </script>
+ 
+{% endblock %}
